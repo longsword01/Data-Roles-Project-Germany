@@ -1,3 +1,46 @@
+# Introduction
+Welcome to my project about job market in germany focusing on data roles (mostlly data analyst). I made this project as a desire to analyse the job market more effectively as myself in the future also aspire to apply to these data roles.
+# Overview
+below is a few key points that i want to analyse
+1. the most in demand skills for top 3 data roles.
+2. trend of in demand skills for data analyst roles
+3. data analyst skills and salary
+4. in demand skills to learn for data analyst roles
+# Tools in this project
+* python
+* pandas library
+* matplotlib library
+* seaborn library
+* Visual Studio code
+* jupyter notebook
+* Git and Github
+
+
+
+# Importing data and cleanup
+I began by importing all the necessary libraries, followed by loading the dataset. Finally, I performed data cleaning to prepare it for analysis.
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df = pd.read_csv("C:\\Users\\LENOVO\\OneDrive\\Desktop\\data_jobs.csv")
+df.job_posted_date = pd.to_datetime(df.job_posted_date)
+import ast
+
+df = df[df["job_skills"].notna()]  # Remove NaNs to avoid errors
+
+df["job_skills"] = df["job_skills"].apply(ast.literal_eval)
+```
+
+
+
+
+
+
+
+
+
+
 # The Analysis
 ##  1. What are the most crucial skills to learn for data science, data analytic and data enginner in germany?
 to identify the most demanded skills for the 3 data roles. I filtered out the dataset by the top 3 most popular data roles and analyze the top 5 most demanded skills for those roles. this project highlights the most popular job titles and their top skills, showing which skills job applicant must focus on depending on the roles.
@@ -29,7 +72,7 @@ plt.show()
 ![alt text](image.png)
     
 ### Summary
-- We can see here that python is either second or the first most important skills in demand. this shows that pyhton is a versatile skills that every data roles needs prominently for data scientist at (79%).
+- We can see here that python is either second or the first most important skills in demand. this shows that python is a versatile skills that every data roles needs prominently for data scientist at (79%).
 - sql is also in high demand in germany data jobs aswell. We can see from the data that sql top the data analyst skills demand at (56%). and for data engineer and data scientist it ranks second after python respectively at (57%), (41%)
 - data engineer demanded specialized skills like aws, azure and spark compared to the other two roles who are expected to have a good data management skills
 
@@ -70,6 +113,53 @@ The box plot provides insights into the salary distribution for the top five dat
 Senior Data Engineers follow closely, with salaries ranging from $70K to $170K, and a comparable median. Data Engineers earn between $50K and $200K, with an average around $120K, reflecting solid but relatively lower compensation, typically associated with mid-level roles. On the lower end of the spectrum, Data Analysts have the most modest salaries, generally ranging from $45K to $180K, with a median around $95K. Although there are a few outliers earning over $200K, this is not representative of the typical pay for the role.
 
 Overall, the data indicates that roles requiring advanced technical specialization and modeling capabilities, such as Machine Learning Engineer and Data Scientist, command higher salaries in the data industry.
+
+### 4. The most important skills to learn
+
+inside my notebook here are the detailed steps: [optimal_skills_Germany](./optimal_skills_Germany.ipynb)
+
+### Data Visualization
+```python
+from adjustText import adjust_text
+
+fig, ax = plt.subplots(figsize=(12, 8))
+
+# Scatter plot
+ax.scatter(df_da_skills_high_demand["skill_percent"], df_da_skills_high_demand["median_salary"])
+
+# Add skill labels
+texts = []
+for skill, row in df_da_skills_high_demand.iterrows():
+    texts.append(
+        ax.text(row["skill_percent"], row["median_salary"], skill, fontsize=9)
+    )
+```
+![alt text](image-4.png)
+
+### Summary
+The scatter plot shows that python is the highest paying skills above 110k per year and showed up the most in job posting in the data analyst job market along with r, javascript, flask and the other but they appear less on the job post. sql in the other hand is in the middle between python, javascript etc and the bottom skills that consist of tableau etc, paying around 100k per year. But it appears as much as python in job posts. this tells us that python and supporting skills like javascript, R, flask etc is the most optimal skills to learn for someone who wants to break into the data analyst roles in germany.
+
+
+
+# Insight
+### correlation betwwen skill demand and salary:
+from the analysis we found out that advance skills like python, R,  javascript lead to higher salary.
+### skill trend:
+the analysis shows us that the skill trend changes over the course of the year, keeping up with trending skills is crucial.
+### job roles salary:
+provide the average roles for top 3 most popular data roles in germany. this will guide job searcher to consider the  job roles and skills needed for each roles to make a better decision.
+
+
+# Conclusion
+This project has been incredibly challenging and informative for me for someone who wants to break into one of these roles, this project provides an enchance understanding of the job market, salary, and skills that people can use to prepare themselves.
+
+
+
+
+
+
+
+
 
 
 
