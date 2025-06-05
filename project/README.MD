@@ -1,5 +1,6 @@
 # Introduction
 Welcome to my project about job market in germany focusing on data roles (mostly data analyst). I made this project as a desire to analyse the job market more effectively as myself in the future also aspire to apply to these data roles. I got the job data from lukebarousse/data_jobs, i downloaded the data jobs and saved it as an excel file to be exported to VS code to be analyzed.
+
 # Overview
 below is a few key points that i want to analyse
 1. the most in demand skills for top 3 data roles.
